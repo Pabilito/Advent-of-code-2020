@@ -39,4 +39,5 @@ for x in mylist:
         j+=1
         
 print(1000-j)
+#Answer is : 325
         

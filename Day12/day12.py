@@ -53,4 +53,49 @@ print(abs(PosX)+abs(PosY))
 #----------------------
 #Part 2
 
-#Answer is 
+WayY=1 #N is positive
+WayX=10 #E is positive
+ShipY=0
+ShipX=0
+
+for x in mylist:
+        if x[0][0] == "F":
+                ShipY += int(x[0][1])*WayY
+                ShipX += int(x[0][1])*WayX
+        elif x[0][0] == "L":
+                swaps = (int(x[0][1])%360)/90
+                if swaps == 1:
+                        copy = WayX
+                        WayX = -WayY
+                        WayY = copy   
+                elif swaps == 2:
+                        WayY = -WayY
+                        WayX = -WayX
+                elif swaps == 3:      
+                        copy = WayX
+                        WayX = WayY
+                        WayY = -copy  
+        elif x[0][0] == "R":
+                swaps = (int(x[0][1])%360)/90 
+                if swaps == 1:
+                        copy = WayX
+                        WayX = WayY
+                        WayY = -copy  
+                elif swaps == 2:
+                        WayY = -WayY
+                        WayX = -WayX
+                elif swaps == 3:
+                        copy = WayX
+                        WayX = -WayY
+                        WayY = copy
+        elif x[0][0] == "N":
+                WayY+=int(x[0][1])                      
+        elif x[0][0] == "E":
+                WayX+=int(x[0][1])          
+        elif x[0][0] == "S":
+                WayY-=int(x[0][1])        
+        else:
+                WayX-=int(x[0][1])
+        
+print(abs(ShipX)+abs(ShipY))
+#Answer is 89936
